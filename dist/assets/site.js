@@ -1,4 +1,61 @@
 const menuToggle = document.querySelector('.menu-toggle');
+
+const carousel = document.querySelector('.hero-carousel');
+if (carousel) {
+  const slides = Array.from(carousel.querySelectorAll('.hero-slide'));
+  const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
+  const controls = carousel.querySelector('.hero-carousel-controls');
+  const pauseButton = carousel.querySelector('[data-carousel-pause]');
+  const announcement = carousel.querySelector('#carousel-status');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0;
+  let timer;
+  let paused = false;
+
+  const show = (index, announce = false) => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const active = i === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.inert = !active;
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === current);
+      if (i === current) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+    if (announce) announcement.textContent = slides[current].getAttribute('aria-label');
+  };
+
+  const stop = () => { window.clearInterval(timer); timer = undefined; };
+  const start = () => {
+    stop();
+    if (!paused && !reducedMotion.matches && !document.hidden && !controls.matches(':hover') && !carousel.contains(document.activeElement)) {
+      timer = window.setInterval(() => show(current + 1), 5500);
+    }
+  };
+  const select = index => { show(index, true); start(); };
+
+  carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => select(current - 1));
+  carousel.querySelector('[data-carousel-next]').addEventListener('click', () => select(current + 1));
+  dots.forEach((dot, index) => dot.addEventListener('click', () => select(index)));
+  pauseButton.addEventListener('click', () => {
+    paused = !paused;
+    pauseButton.setAttribute('aria-pressed', String(paused));
+    pauseButton.setAttribute('aria-label', paused ? 'Retomar carrossel' : 'Pausar carrossel');
+    start();
+  });
+  controls.addEventListener('mouseenter', stop);
+  controls.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', stop);
+  carousel.addEventListener('focusout', () => window.setTimeout(start, 0));
+  document.addEventListener('visibilitychange', start);
+  reducedMotion.addEventListener('change', start);
+  show(0);
+  start();
+}
+
 const menu = document.querySelector('#navegacao');
 menuToggle?.addEventListener('click', () => {
   const open = menuToggle.getAttribute('aria-expanded') !== 'true';

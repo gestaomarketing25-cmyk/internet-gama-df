@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/finishing.css">
   <link rel="stylesheet" href="/assets/brand-refresh.css">
+  <link rel="stylesheet" href="/assets/hero-carousel.css">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -26,18 +27,57 @@
     </div>
   </header>
   <main id="conteudo">
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <h1 id="hero-title">Sua vida pede uma internet que <em>acompanha.</em></h1>
-          <p class="hero-description">Mais velocidade para jogar, assistir, estudar e trabalhar. Escolha o plano que combina com sua rotina e fale com a Internet Gama.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#planos">Conhecer planos</a></div>
-        </div>
-        <div class="hero-art" aria-label="Mascote verde da Internet Gama sorrindo e segurando um celular">
-          <img class="hero-mascot" src="/assets/mascote.png" alt="Mascote verde da Internet Gama" width="1024" height="1385" fetchpriority="high">
-          <div class="floating-pill"><strong>350 Mega</strong> a partir de R$ 75,90/mês</div>
-        </div>
+    <section class="hero hero-carousel" id="inicio" aria-labelledby="hero-title" aria-roledescription="carrossel">
+      <h1 class="visually-hidden" id="hero-title">Planos de internet da Internet Gama</h1>
+      <div class="hero-slides">
+        <article class="hero-slide is-active" aria-roledescription="slide" aria-label="1 de 3: plano de 350 Mega" data-slide="0">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <span class="hero-plan-label">Internet para acompanhar você</span>
+              <h2>350 <em>Mega</em></h2>
+              <p class="hero-slide-description">Sua rotina com mais velocidade para estudar, navegar e aproveitar cada momento.</p>
+              <p class="hero-price"><span>por</span><strong><small>R$</small> 75<sup>,90</sup></strong><span>/mês</span></p>
+              <a class="button button-primary hero-plan-cta" href="#contato" data-plan="350 Mega">Quero este plano</a>
+            </div>
+            <div class="hero-art"><img class="hero-mascot" src="/assets/periquito-versao-1.png" alt="Periquito verde com celular" width="941" height="1171" fetchpriority="high"></div>
+          </div>
+        </article>
+        <article class="hero-slide" aria-roledescription="slide" aria-label="2 de 3: plano de 600 Mega" data-slide="1" aria-hidden="true" inert>
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <span class="hero-plan-label">Mais conexão para toda a casa</span>
+              <h2>600 <em>Mega</em></h2>
+              <p class="hero-slide-description">Para assistir, jogar e conectar todo mundo com tranquilidade.</p>
+              <p class="hero-price"><span>por</span><strong><small>R$</small> 99<sup>,90</sup></strong><span>/mês</span></p>
+              <a class="button button-primary hero-plan-cta" href="#contato" data-plan="600 Mega">Quero este plano</a>
+            </div>
+            <div class="hero-art hero-art-couch"><img class="hero-mascot" src="/assets/periquito-versao-2.png" alt="Periquito verde relaxando no sofá" width="1438" height="959" loading="lazy"></div>
+          </div>
+        </article>
+        <article class="hero-slide" aria-roledescription="slide" aria-label="3 de 3: plano de 1 Giga" data-slide="2" aria-hidden="true" inert>
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <span class="hero-plan-label">Potência para tudo o que você faz</span>
+              <h2>1 <em>Giga</em></h2>
+              <p class="hero-slide-description">Velocidade de sobra para trabalhar, jogar e viver sem pausas.</p>
+              <p class="hero-price"><span>por</span><strong><small>R$</small> 139<sup>,90</sup></strong><span>/mês</span></p>
+              <a class="button button-primary hero-plan-cta" href="#contato" data-plan="1 Giga">Quero este plano</a>
+            </div>
+            <div class="hero-art"><img class="hero-mascot" src="/assets/periquito-versao-3.png" alt="Periquito verde apontando para você" width="907" height="1133" loading="lazy"></div>
+          </div>
+        </article>
       </div>
+      <div class="container hero-carousel-controls" aria-label="Controles do carrossel">
+        <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Banner anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></button>
+        <div class="carousel-dots" role="group" aria-label="Escolher banner">
+          <button class="carousel-dot is-active" type="button" data-carousel-dot="0" aria-label="Mostrar plano de 350 Mega" aria-current="true"></button>
+          <button class="carousel-dot" type="button" data-carousel-dot="1" aria-label="Mostrar plano de 600 Mega"></button>
+          <button class="carousel-dot" type="button" data-carousel-dot="2" aria-label="Mostrar plano de 1 Giga"></button>
+        </div>
+        <button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximo banner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg></button>
+        <button class="carousel-pause" type="button" data-carousel-pause aria-label="Pausar carrossel" aria-pressed="false"><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg></button>
+      </div>
+      <p class="visually-hidden" id="carousel-status" aria-live="polite" aria-atomic="true"></p>
     </section>
 
     <section class="section plans" id="planos" aria-labelledby="plans-title">
