@@ -17,6 +17,7 @@
 .hero-price strong{font:900 clamp(62px,6.6vw,91px)/.95 Outfit,sans-serif;letter-spacing:-.065em;color:#a3ed00;white-space:nowrap}
 .hero-price small{font-size:.34em;letter-spacing:-.02em}
 .hero-price sup{position:relative;top:-.95em;font-size:.34em;letter-spacing:-.02em}
+.hero-price-unit{display:inline-block;margin-left:4px;font:700 .54em/1 'DM Sans',Arial,sans-serif;letter-spacing:0;vertical-align:baseline;color:#fff}
 .hero-plan-cta{min-width:190px}
 .hero-carousel .hero-art{height:480px;min-height:0;overflow:visible}
 .hero-carousel .hero-art::before{width:min(100%,420px);box-shadow:0 0 0 25px rgba(160,237,0,.08),0 0 0 52px rgba(160,237,0,.045)}

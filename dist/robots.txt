@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://internet-gama-df.gestaomarketing-25.chatgpt.site/sitemap.xml
